@@ -6,7 +6,7 @@ working title: Actual A.I. Artist
 
 You play as a Robot artist trying to get by selling GLSL fragment shaders for fule ect. ect.
 
-# Main Gameplay Loop
+### Main Gameplay Loop
 
 - aiming for the basic playstyle of Passpartout
 - selling shaders to other robots and then they use them on there displays (like if they have a monitor for a head is will show up there i was thinking of having them like the robots in stray)
@@ -31,7 +31,7 @@ You play as a Robot artist trying to get by selling GLSL fragment shaders for fu
 - i do want to have a time spent thing on it but it would 1. need a cap of like 4hr and 2. have a time out if you dont change stuff so you cant cheese the time thing 
 - comments should be free but they are like written in crayon on top of the moitor lol 
 
-# basic starting pallet should look like this 
+### basic starting pallet should look like this 
 
 ```GLSL
 uniform float Time;
