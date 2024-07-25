@@ -1,37 +1,34 @@
 # Project Name
 
-working title: Actual A.I. Artist
+**Working Title: Actual A.I. Artist**
 
 ## Description
 
-You play as a Robot artist trying to get by selling GLSL fragment shaders for fule ect. ect.
+In this game, you play as a robot artist trying to make a living by selling GLSL fragment shaders for essentials like fuel.
 
 ### Main Gameplay Loop
 
-- aiming for the basic playstyle of Passpartout
-- selling shaders to other robots and then they use them on there displays (like if they have a monitor for a head is will show up there i was thinking of having them like the robots in stray)
-- starts at the void fragment() {...} 
-- limited lines of code
-- limited stuff like only being able to use vec2 and float at first mybe int idk 
-- extra lines and new types (vec3, Fract, sin ect) can be bought at the store to add to your "pallett"
-- should i limit math stuff like lock division and mutiplication away at first? idk if that would be fun  
-- unlock ablity to use functions but you will need to split your lines between that and main void fragment() {...} 
-- this "should" stop playes from just doing everything in a fuction
-- unlock set uniform variables like people walking by or mouse movent or whatever i can program in 
-- i want to have it like Blockly coding style where you drag stuff in and fill out the varables so like if you drag in a vec3 it would look like vec3(0.0 , 0.0 , 0.0) only issue would be if you wanna add a vec2 varable to it, it would need to recognise that and do sonething like vec3(theVecTwo , 0.0)
-- line of code is counted when a ; is placed. this "should" limit a 1 line cheese 
-- fully blank lines are free for readablilty 
-- start with like 5 lines?
-- should probubly start them with a time uniform
-- free line for the out put but will only except a single var for the vec4
-- live view of the shader 
-- view port is a 512 x 512 maby diffrent sizes for custom orders 
-- idk how im gonna do gradeing for how much a bot likes it 
-- mybe like a bunch of if statements some bots give more points for some stuff 
-- i do want to have a time spent thing on it but it would 1. need a cap of like 4hr and 2. have a time out if you dont change stuff so you cant cheese the time thing 
-- comments should be free but they are like written in crayon on top of the moitor lol 
+- The gameplay is inspired by *Passpartout*.
+- You sell shaders to other robots, who use them on their displays (imagine robots with monitors for heads, similar to those in *Stray*).
+- You start with a basic shader in the form of `void fragment() { ... }`.
+- Initially, you'll have limited code capabilities, using only `vec2` and `float` types. There may be a limited use of `int` types as well.
+- Additional lines and new types (such as `vec3`, `fract`, `sin`, etc.) can be purchased in-game to expand your "palette."
+- Consider whether to restrict mathematical operations like division and multiplication at first. It may affect gameplay.
+- You’ll eventually unlock the ability to use functions, but you'll need to manage your lines of code between the main `void fragment() { ... }` function and additional functions. This should prevent players from doing everything in a single function.
+- Unlocking the ability to set uniform variables, such as simulating people walking by or mouse movement, will add depth.
+- The interface will resemble a Blockly coding style, where you drag and drop elements and fill out variables. For example, dragging in a `vec3` would look like `vec3(0.0, 0.0, 0.0)`. If you want to add a `vec2` variable to it, the game would handle it by converting it to `vec3(theVecTwo, 0.0)`.
+- Code lines are counted by semicolons (`;`), which should limit one-line shortcuts.
+- Blank lines are allowed for readability.
+- Start with a maximum of 5 lines of code.
+- Code lines should begin with a time uniform.
+- There will be a free line for output, but it will only accept a single `vec4` variable.
+- Live shader preview available.
+- The viewport will be 512 x 512 pixels, with potential for custom sizes for specific orders.
+- Grading how much a bot likes a shader is still being considered. Maybe use a system with `if` statements where some bots reward certain features more.
+- A time-spent feature will be included with a 4-hour cap and a timeout if no changes are made, to prevent exploiting the time system.
+- Comments will be allowed but appear as if written in crayon on top of the monitor for a playful touch.
 
-### basic starting pallet should look like this 
+### Basic Starting Palette
 
 ```GLSL
 uniform float Time;
