@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://uh55o3k7n7me"]
+
+[ext_resource type="Shader" path="res://RedCircles.gdshader" id="2_lqiw6"]
+[ext_resource type="Texture2D" uid="uid://b6jbf7xx1y2cn" path="res://consavelogo-01.png" id="3_3vjpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75mye"]
+shader = ExtResource("2_lqiw6")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j5lxr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_75mye")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_j5lxr")
+metadata/_edit_use_anchors_ = true
+
+[node name="Consavelogo-01" type="Sprite2D" parent="."]
+position = Vector2(232, 232)
+scale = Vector2(0.0505815, 0.0672481)
+texture = ExtResource("3_3vjpv")
