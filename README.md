@@ -47,25 +47,13 @@ void fragment() {
 COLOR = ART;
 ```
 
-## Table of Contents
+## Other features, thoughts or ideas 
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- i would like a way for them to be able to export a shader they made to a GLSL file or .gdshader maybe both idk 
+- that would make a sandbox mode be fun to use for like real projects but i suck at glsl so it might not be that cool 
+- i just know someone will try to divide by 0 if not on purpos maybe by accident so I need a way to stop that 
+- also i dont want them to fry their graphics card so load should be considered  and a limit to doing dumb stuff but im dumb so im not sure what that dumb stuff is yet 
+- should i limit line length? like add wrapping for free?
+- i dont really know if i can do this or if i even want to 
+- elp...
 
-## Installation
-
-Instructions on how to install and set up the project.
-
-## Usage
-
-Instructions on how to use the project or any relevant examples.
-
-## Contributing
-
-Guidelines on how to contribute to the project.
-
-## License
-
-Information about the project's license.
