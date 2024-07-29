@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Sand Lot"
-run/main_scene="res://favicon.tscn"
+run/main_scene="res://Intro.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://favicon.png"
 
 [display]
 
-window/size/viewport_width=464
-window/size/viewport_height=464
+window/size/viewport_width=800
+window/size/viewport_height=460
 
 [rendering]
 

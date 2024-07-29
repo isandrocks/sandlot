@@ -1,3 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://dyk6kmof1qpcj"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dyk6kmof1qpcj"]
+
+[sub_resource type="SystemFont" id="SystemFont_mudyo"]
 
 [resource]
+default_font = SubResource("SystemFont_mudyo")
+default_font_size = 15

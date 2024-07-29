@@ -57,3 +57,8 @@ COLOR = ART;
 - i dont really know if i can do this or if i even want to 
 - elp...
 
+### things to do 
+- i want to be able to pass in the time variable into a shader 
+  - ~~i have not tested if my way i am passing variables work at all ~~
+    - ~~ i need to try this with just floats first ~~
+  - trying to get a full expressing to run in _process so it will always update iTime
