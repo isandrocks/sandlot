@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://uh55o3k7n7me"]
 
-[ext_resource type="Script" path="res://M_Menu.gd" id="1_b022v"]
-[ext_resource type="Shader" path="res://M_MenuBG.gdshader" id="1_cwcbc"]
-[ext_resource type="Shader" path="res://M_Menu.gdshader" id="3_tnu2m"]
+[ext_resource type="Script" path="res://Scene/Main/M_Menu.gd" id="1_7if72"]
+[ext_resource type="Shader" path="res://Assets/Shaders/M_MenuBG.gdshader" id="2_p8tvr"]
+[ext_resource type="Shader" path="res://Assets/Shaders/M_Menu.gdshader" id="3_8r1q3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13f76"]
-shader = ExtResource("1_cwcbc")
+shader = ExtResource("2_p8tvr")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2v6lb"]
 
@@ -18,7 +18,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_db55i"]
-shader = ExtResource("3_tnu2m")
+shader = ExtResource("3_8r1q3")
 shader_parameter/iTime = null
 shader_parameter/A_text = null
 shader_parameter/B_text = null
@@ -32,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b022v")
+script = ExtResource("1_7if72")
 metadata/_edit_use_anchors_ = true
 
 [node name="MM_Background" type="TextureRect" parent="."]

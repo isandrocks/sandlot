@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6jbf7xx1y2cn"
-path="res://.godot/imported/consavelogo-01.png-b5cf606a3edecc87ad67c0b05a84f654.ctex"
+uid="uid://bmjldlf6duujm"
+path="res://.godot/imported/ConSavelogo-03.png-3ceb64c8744ba9fc1207ed4e2a4b3c1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://consavelogo-01.png"
-dest_files=["res://.godot/imported/consavelogo-01.png-b5cf606a3edecc87ad67c0b05a84f654.ctex"]
+source_file="res://Assets/Img/ConSavelogo-03.png"
+dest_files=["res://.godot/imported/ConSavelogo-03.png-3ceb64c8744ba9fc1207ed4e2a4b3c1d.ctex"]
 
 [params]
 

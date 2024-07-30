@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://bhntxeu16812n"]
 
-[ext_resource type="Shader" path="res://RedCircles.gdshader" id="1_irj0f"]
-[ext_resource type="Texture2D" uid="uid://b6jbf7xx1y2cn" path="res://consavelogo-01.png" id="2_t4no1"]
-[ext_resource type="Texture2D" uid="uid://dhegy63ljultd" path="res://favicon.png" id="3_oqgps"]
-[ext_resource type="Script" path="res://TextureButton.gd" id="4_jhvba"]
-[ext_resource type="Script" path="res://AnimationPlayer.gd" id="5_qtxpq"]
+[ext_resource type="Shader" path="res://Assets/Shaders/RedCircles.gdshader" id="1_7s485"]
+[ext_resource type="Texture2D" uid="uid://b6jbf7xx1y2cn" path="res://Assets/Img/consavelogo-01.png" id="2_g5h2k"]
+[ext_resource type="Texture2D" uid="uid://dhegy63ljultd" path="res://Assets/Img/favicon.png" id="3_ff3kv"]
+[ext_resource type="Script" path="res://Scene/Intro/TextureButton.gd" id="4_pus3y"]
+[ext_resource type="Script" path="res://Scene/Intro/AnimationPlayer.gd" id="5_x0edu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wpmk"]
-shader = ExtResource("1_irj0f")
+shader = ExtResource("1_7s485")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l8sa8"]
 
@@ -239,7 +239,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_t4no1")
+texture = ExtResource("2_g5h2k")
 expand_mode = 2
 
 [node name="Heart_Button" type="TextureButton" parent="."]
@@ -254,16 +254,16 @@ mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
 disabled = true
 keep_pressed_outside = true
-texture_normal = ExtResource("3_oqgps")
-texture_pressed = ExtResource("3_oqgps")
-script = ExtResource("4_jhvba")
+texture_normal = ExtResource("3_ff3kv")
+texture_pressed = ExtResource("3_ff3kv")
+script = ExtResource("4_pus3y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gyf5p")
 }
 autoplay = "intro"
-script = ExtResource("5_qtxpq")
+script = ExtResource("5_x0edu")
 
 [connection signal="pressed" from="Heart_Button" to="Heart_Button" method="_on_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

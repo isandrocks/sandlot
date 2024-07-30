@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tllc0kw56ucf"
-path="res://.godot/imported/ComfyUI_temp_plmyb_00011_.png-a19d235949f596da75e24e6b14d1b21d.ctex"
+uid="uid://dhegy63ljultd"
+path="res://.godot/imported/favicon.png-e2775a00a49f84ffed5e558e0130231c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ComfyUI_temp_plmyb_00011_.png"
-dest_files=["res://.godot/imported/ComfyUI_temp_plmyb_00011_.png-a19d235949f596da75e24e6b14d1b21d.ctex"]
+source_file="res://Assets/Img/favicon.png"
+dest_files=["res://.godot/imported/favicon.png-e2775a00a49f84ffed5e558e0130231c.ctex"]
 
 [params]
 

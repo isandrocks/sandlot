@@ -13,6 +13,6 @@ func _process(_delta):
 
 func _on_animation_finished(anim_name):
 	if anim_name.get_basename() == "next_screen":
-		get_tree().change_scene_to_file("res://M_Menu.tscn")
+		get_tree().change_scene_to_file("res://Scene/Main/M_Menu.tscn")
 	else:
 		pass

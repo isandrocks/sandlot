@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Sand Lot"
-run/main_scene="res://Intro.tscn"
+run/main_scene="res://Scene/Intro/Intro.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://favicon.png"
+config/icon="res://Assets/Img/favicon.png"
 
 [display]
 
