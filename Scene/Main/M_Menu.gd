@@ -27,7 +27,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	$ColorRect.material.set_shader_parameter("iTime", iTime)
+	$ColorRect.material.set_shader_parameter("x", iTime)
 	
 	if A_Func == null:		
 		$ColorRect.material.set_shader_parameter("A_text", A_Text)
@@ -63,15 +63,14 @@ func _process(delta):
 			iTime = 0.0
 			direction = 1.0
 
-	return iTime
-	
+	return iTime	
 	
 # String to expression parsing functions
 func get_A_Text_function():
 	
 	# Create a new Expression instance
 	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/A/A_Line.text, ["iTime"])
+	var error = new_function.parse($ItemList/A/A_Line.text, ["x"])
 
 	# Check if the text is a valid float or integer
 	if $ItemList/A/A_Line.text.is_valid_float() or $ItemList/A/A_Line.text.is_valid_int():
@@ -84,11 +83,10 @@ func get_A_Text_function():
 			return A_Func
 
 	return null  # Return null if none of the conditions are met
-
 	
 func get_B_Text_function():
 	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/B/B_Line.text, ["iTime"])
+	var error = new_function.parse($ItemList/B/B_Line.text, ["x"])
 	
 	if $ItemList/B/B_Line.text.is_valid_float() or $ItemList/B/B_Line.text.is_valid_int():
 		B_Text = $ItemList/B/B_Line.text.to_float()
@@ -102,7 +100,7 @@ func get_B_Text_function():
 
 func get_C_Text_function():
 	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/C/C_Line.text, ["iTime"])
+	var error = new_function.parse($ItemList/C/C_Line.text, ["x"])
 
 	if $ItemList/C/C_Line.text.is_valid_float() or $ItemList/C/C_Line.text.is_valid_int():
 		C_Text = $ItemList/C/C_Line.text.to_float()
@@ -116,7 +114,7 @@ func get_C_Text_function():
 
 func get_D_Text_function():
 	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/D/D_Line.text, ["iTime"])
+	var error = new_function.parse($ItemList/D/D_Line.text, ["x"])
 
 	if $ItemList/D/D_Line.text.is_valid_float() or $ItemList/D/D_Line.text.is_valid_int():
 		D_Text = $ItemList/D/D_Line.text.to_float()
@@ -160,3 +158,6 @@ func D_line_text_changed(text):
 		D_Func = null
 	else:
 		D_Func = get_D_Text_function()
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://Scene/Main/full edit/fulledit.tscn")

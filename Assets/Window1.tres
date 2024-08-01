@@ -5,3 +5,4 @@
 [resource]
 default_font = SubResource("SystemFont_mudyo")
 default_font_size = 15
+Button/fonts/font = SubResource("SystemFont_mudyo")

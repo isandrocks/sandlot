@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdip52abp1iqc"]
+
+[ext_resource type="Script" path="res://Scene/Main/full edit/fulledit.gd" id="1_mwi6k"]
+[ext_resource type="Shader" path="res://Assets/Shaders/M_MenuBG.gdshader" id="2_256nu"]
+[ext_resource type="Material" uid="uid://ccd8jx2wr7rdp" path="res://Assets/SandBox_shaderMat.tres" id="3_mnl56"]
+[ext_resource type="Script" path="res://Scene/Main/full edit/ShaderControl.gd" id="4_6mnf6"]
+[ext_resource type="Theme" uid="uid://dyk6kmof1qpcj" path="res://Assets/Window1.tres" id="4_nwl5s"]
+[ext_resource type="PackedScene" uid="uid://dadr4k7fykydo" path="res://Scene/Main/full edit/color_rect_FE.tscn" id="4_q3o3o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcygs"]
+shader = ExtResource("2_256nu")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ailji"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mwi6k")
+
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_wcygs")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_ailji")
+expand_mode = 3
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.139
+anchor_right = 0.41
+anchor_bottom = 0.835
+offset_top = 0.119999
+offset_right = 0.399994
+offset_bottom = 0.97998
+theme_override_font_sizes/font_size = 10
+deselect_on_focus_loss_enabled = false
+caret_blink = true
+caret_mid_grapheme = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ShaderControl" type="Control" parent="."]
+material = ExtResource("3_mnl56")
+layout_mode = 1
+anchor_left = 0.53
+anchor_top = 0.139
+anchor_right = 0.93
+anchor_bottom = 0.835
+offset_top = -0.120003
+offset_bottom = -0.200043
+script = ExtResource("4_6mnf6")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" parent="ShaderControl" instance=ExtResource("4_q3o3o")]
+layout_mode = 2
+anchors_preset = 0
+
+[node name="Clear" type="Button" parent="ShaderControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = 8.10007
+offset_right = -64.0
+offset_bottom = 39.1001
+grow_horizontal = 2
+grow_vertical = 0
+text = "Clear"
+
+[node name="Load" type="Button" parent="ShaderControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 8.10007
+offset_right = 160.0
+offset_bottom = 39.1001
+grow_horizontal = 2
+grow_vertical = 0
+text = "Load"
+
+[node name="Main_M" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.148261
+anchor_right = 0.52
+anchor_bottom = 0.20913
+offset_top = -0.200043
+offset_bottom = -0.200012
+theme = ExtResource("4_nwl5s")
+theme_override_font_sizes/font_size = 13
+text = "Main Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="signal_reload" from="." to="ShaderControl" method="_on_control_signal_reload"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="ShaderControl/Clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="ShaderControl/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Main_M" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

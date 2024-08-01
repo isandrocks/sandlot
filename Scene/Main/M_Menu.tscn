@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://uh55o3k7n7me"]
+[gd_scene load_steps=10 format=3 uid="uid://uh55o3k7n7me"]
 
 [ext_resource type="Script" path="res://Scene/Main/M_Menu.gd" id="1_7if72"]
 [ext_resource type="Shader" path="res://Assets/Shaders/M_MenuBG.gdshader" id="2_p8tvr"]
 [ext_resource type="Shader" path="res://Assets/Shaders/M_Menu.gdshader" id="3_8r1q3"]
+[ext_resource type="Theme" uid="uid://dyk6kmof1qpcj" path="res://Assets/Window1.tres" id="4_6heq7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13f76"]
 shader = ExtResource("2_p8tvr")
@@ -55,11 +56,17 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_db55i")
-layout_mode = 0
-offset_left = 424.0
-offset_top = 64.0
-offset_right = 744.0
-offset_bottom = 384.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.139
+anchor_right = 0.93
+anchor_bottom = 0.835
+offset_left = -3.05176e-05
+offset_top = 0.0599937
+offset_right = -6.10352e-05
+offset_bottom = -0.100006
+metadata/_edit_use_anchors_ = true
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 1
@@ -68,19 +75,21 @@ anchor_left = 0.08
 anchor_top = 0.139
 anchor_right = 0.41
 anchor_bottom = 0.835
-offset_top = 0.0599937
-offset_right = -3.05176e-05
-offset_bottom = -0.100006
+offset_top = 0.0600014
+offset_bottom = -0.0999756
 
 [node name="A" type="Label" parent="ItemList"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03
+anchor_top = 0.075
 anchor_right = 0.14
-anchor_bottom = 0.075
+anchor_bottom = 0.15
 offset_left = 0.0799999
 offset_right = 0.0400009
-text = "A = "
+text = "A = 
+"
+metadata/_edit_use_anchors_ = true
 
 [node name="A_Line" type="LineEdit" parent="ItemList/A"]
 layout_mode = 1
@@ -88,21 +97,32 @@ anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 8.828
 anchor_bottom = 1.292
+offset_top = -4.0
 offset_right = -8.01199
-offset_bottom = -0.00799942
-placeholder_text = "sinh(TIME)"
+offset_bottom = -4.008
+text = "0.0"
+
+[node name="Red" type="Label" parent="ItemList/A"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 27.0
+offset_bottom = 23.0
+text = "Red"
 
 [node name="B" type="Label" parent="ItemList"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03
-anchor_top = 0.2
+anchor_top = 0.275
 anchor_right = 0.14
-anchor_bottom = 0.272
+anchor_bottom = 0.347
 offset_left = 0.0799999
 offset_right = 0.0400009
 offset_bottom = -0.0400085
 text = "B ="
+metadata/_edit_use_anchors_ = true
 
 [node name="B_Line" type="LineEdit" parent="ItemList/B"]
 layout_mode = 1
@@ -110,22 +130,24 @@ anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 8.828
 anchor_bottom = 1.348
+offset_top = -4.0
 offset_right = -8.01196
-offset_bottom = -0.00400162
+offset_bottom = -4.004
 grow_horizontal = 0
-placeholder_text = "cos((TIME * 2.0)/2.50)"
+text = "0.32"
 
 [node name="C" type="Label" parent="ItemList"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03
-anchor_top = 0.4
+anchor_top = 0.475
 anchor_right = 0.14
-anchor_bottom = 0.472
+anchor_bottom = 0.547
 offset_left = 0.0799999
 offset_right = 0.0400009
 offset_bottom = -0.0400085
 text = "C ="
+metadata/_edit_use_anchors_ = true
 
 [node name="C_Line" type="LineEdit" parent="ItemList/C"]
 layout_mode = 1
@@ -133,22 +155,25 @@ anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 8.828
 anchor_bottom = 1.348
+offset_top = -3.0
 offset_right = -8.01196
-offset_bottom = -0.00400162
+offset_bottom = -3.004
 grow_horizontal = 0
-placeholder_text = "sin(TIME)"
+text = "0.0"
 
 [node name="D" type="Label" parent="ItemList"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.6
-anchor_right = 0.14
-anchor_bottom = 0.672
-offset_left = 0.0799999
-offset_right = 0.0400009
-offset_bottom = -0.0400085
+anchor_left = 0.0302121
+anchor_top = 0.675125
+anchor_right = 0.136212
+anchor_bottom = 0.747125
+offset_left = 0.0240002
+offset_top = -0.0399933
+offset_right = 1.04
+offset_bottom = -0.0800018
 text = "D ="
+metadata/_edit_use_anchors_ = true
 
 [node name="D_Line" type="LineEdit" parent="ItemList/D"]
 layout_mode = 1
@@ -156,10 +181,12 @@ anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 8.828
 anchor_bottom = 1.348
-offset_right = -8.01196
-offset_bottom = -0.00400162
+offset_left = 2.28882e-05
+offset_top = -4.0
+offset_right = -8.01193
+offset_bottom = -4.004
 grow_horizontal = 0
-placeholder_text = "1.0"
+text = "1.0"
 
 [node name="bottom_legend" type="Label" parent="ItemList"]
 layout_mode = 1
@@ -168,15 +195,31 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -40.0
-offset_right = 91.0
-offset_bottom = -16.0
+offset_left = -95.0
+offset_top = -48.0
+offset_right = 96.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "COLOR = Vec4( A, B, C, D)"
+text = "COLOR = Vec4( A, B, C, D)
+x = 0.0 ~ 1.0"
+
+[node name="SandBox_Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.148261
+anchor_right = 0.52
+anchor_bottom = 0.20913
+offset_top = -0.200043
+offset_bottom = -0.200012
+theme = ExtResource("4_6heq7")
+theme_override_font_sizes/font_size = 14
+text = "SandBox"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="text_changed" from="ItemList/A/A_Line" to="." method="A_line_text_changed"]
 [connection signal="text_changed" from="ItemList/B/B_Line" to="." method="B_line_text_changed"]
 [connection signal="text_changed" from="ItemList/C/C_Line" to="." method="C_line_text_changed"]
 [connection signal="text_changed" from="ItemList/D/D_Line" to="." method="D_line_text_changed"]
+[connection signal="pressed" from="SandBox_Button" to="." method="_on_button_pressed"]
