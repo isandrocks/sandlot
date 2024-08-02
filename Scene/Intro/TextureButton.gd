@@ -12,5 +12,5 @@ func _process(_delta):
 
 
 func _on_pressed():
-	print("is this thing on? Hello? World??")
+	print("Tap, Tap, is this thing on?")
 	get_node("../AnimationPlayer").play("next_screen")
