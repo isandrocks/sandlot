@@ -13,6 +13,7 @@ config_version=5
 config/name="Sand Lot"
 run/main_scene="res://Scene/Intro/Intro.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://Assets/Img/favicon.png"
 config/icon="res://Assets/Img/favicon.png"
 
 [autoload]
@@ -23,6 +24,12 @@ Global="*res://Scene/Global.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=460
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
 
 [rendering]
 

@@ -1,9 +1,10 @@
 extends Control
 
-var shaderFile_path = "res://Assets/Shaders/full_edit.gdshader"
-var shaderFile_default = "res://Assets/Shaders/full_edit_default.gdshader"
+var shaderFile_path = "Assets/Shaders/full_edit.gdshader"
+var shaderFile_default = "Assets/Shaders/full_edit_default.gdshader"
 var shaderFile_Read = null
 var shaderFile_Write = null
+var local_path = ProjectSettings.globalize_path(shaderFile_path)
 
 signal signal_reload
 
@@ -40,21 +41,24 @@ func _on_text_edit_text_changed():
 	shaderFile_Write.close()
 	
 	if $Timer.is_stopped():
-		$ShaderControl/ColorRect.material.shader = null
-		$ShaderControl/ColorRect.queue_free()
 		$Timer.start()
 
 func _on_clear_pressed():
 	$ShaderControl/ColorRect.material.shader = null
 
 func _on_load_pressed():
-	if $Timer.is_stopped():
-		if $ShaderControl/ColorRect != null:
-			$ShaderControl/ColorRect.queue_free()
-		$Timer.start()
+	shaderFile_Read = FileAccess.open(shaderFile_path, FileAccess.READ)
+	var content = shaderFile_Read.get_as_text()
+	shaderFile_Read.close()	
+	var new_shader = Shader.new()
+	new_shader.set_code(content)
+	$ShaderControl/ColorRect.material.shader = new_shader
 
 func _on_timer_timeout():
 	Global.skip_ready = true
-	var fe_shader = load("res://Assets/Shaders/full_edit.gdshader")
-	emit_signal("signal_reload")
-	$ShaderControl/ColorRect.material.shader = fe_shader
+	shaderFile_Read = FileAccess.open(shaderFile_path, FileAccess.READ)
+	var content = shaderFile_Read.get_as_text()
+	shaderFile_Read.close()	
+	var new_shader = Shader.new()
+	new_shader.set_code(content)
+	$ShaderControl/ColorRect.material.shader = new_shader
