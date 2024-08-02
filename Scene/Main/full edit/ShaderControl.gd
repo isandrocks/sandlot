@@ -11,9 +11,8 @@ func _ready():
 func _process(_delta):
 	pass
 	
-
 func _on_control_signal_reload():
-	print("signal recieved")
+	$ShaderControl/ColorRect.free()
 	var scene = load("res://Scene/Main/full edit/color_rect_FE.tscn")
 	var instance = scene.instantiate()
 	add_child(instance)

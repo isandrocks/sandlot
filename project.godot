@@ -35,3 +35,14 @@ animation_library={
 
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
+
+[shader_globals]
+
+dark_gray_vec4={
+"type": "vec4",
+"value": Vector4(0.14, 0.14, 0.17, 1)
+}
+dark_gray={
+"type": "color",
+"value": Color(0.14, 0.14, 0.17, 1)
+}

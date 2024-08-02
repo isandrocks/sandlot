@@ -1,5 +1,6 @@
 shader_type canvas_item;
 varying vec2 iResolution;
+uniform sampler2D iChannel0;
 varying vec2 canvas;
 
 vec2 rotate2D(vec2 _st, float _angle){
@@ -32,6 +33,7 @@ float box(vec2 _st, vec2 _size, float _smoothEdges){
 void vertex() {
 	// Called for every vertex the material is visible on.
 	iResolution = (SCREEN_MATRIX * vec4(1.0, 0.5 , 1.0, 1.0)).xy;
+	canvas = (CANVAS_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
 	
 }
 
@@ -40,23 +42,14 @@ void fragment() {
     vec3 color = vec3(0.0);
 
     // Divide the space in 4
-    st = tile(st,8.);
+    st = tile(st,4.);
 
     // Use a matrix to rotate the space 45 degrees
     st = rotate2D(st,PI*0.25);
-	
-	// clamp setup
-	vec3 vec3_min = vec3(0.0);
-	vec3 vec3_max = vec3(1.0);
 
     // Draw a square
-	vec3 fcolor = (vec3(box(st,vec2(0.7),0.03))) - vec3(.88,.88,.88);
-	fcolor = clamp(fcolor, vec3_min, vec3_max);
-	
-	// setting the final colors 
-	fcolor = fcolor + vec3(0.12,0.12,0.14);
-
-
+   vec3 fcolor = vec3(box(st,vec2(0.7),0.01));
+    // color = vec3(st,0.0);
 
     COLOR = vec4(fcolor, 1.0);
 }
