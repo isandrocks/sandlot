@@ -14,44 +14,22 @@ var B_Func: Expression = null
 var C_Func: Expression = null
 var D_Func: Expression = null
 
-
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	print(iTime)
+func _ready():	
 	$ColorRect.material.set_shader_parameter("A_text", A_Text)
 	$ColorRect.material.set_shader_parameter("B_text", B_Text)
 	$ColorRect.material.set_shader_parameter("C_text", C_Text)
 	$ColorRect.material.set_shader_parameter("D_text", D_Text)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	$ColorRect.material.set_shader_parameter("x", iTime)
 	
-	if A_Func == null:		
-		$ColorRect.material.set_shader_parameter("A_text", A_Text)
-	else :
-		if A_Func.execute([iTime]) != null:
-			$ColorRect.material.set_shader_parameter("A_text", A_Func.execute([iTime]))
-			
-	if B_Func == null:
-		$ColorRect.material.set_shader_parameter("B_text", B_Text)
-	else:		
-		if B_Func.execute([iTime]) != null:
-			$ColorRect.material.set_shader_parameter("B_text", B_Func.execute([iTime]))
-			
-	if C_Func == null:
-		$ColorRect.material.set_shader_parameter("C_text", C_Text)
-	else:
-		if C_Func.execute([iTime]) != null:
-			$ColorRect.material.set_shader_parameter("C_text", C_Func.execute([iTime]))
-			
-	if D_Func == null:
-		$ColorRect.material.set_shader_parameter("D_text", D_Text)
-	else:		
-		if D_Func.execute([iTime]) != null:
-			$ColorRect.material.set_shader_parameter("D_text", D_Func.execute([iTime]))
+	update_shader_param(A_Func, A_Text, "A_text")
+	update_shader_param(B_Func, B_Text, "B_text")
+	update_shader_param(C_Func, C_Text, "C_text")
+	update_shader_param(D_Func, D_Text, "D_text")
 					
 	iTime += delta * direction
 
@@ -62,102 +40,54 @@ func _process(delta):
 	elif iTime <= 0.0:
 			iTime = 0.0
 			direction = 1.0
-
 	return iTime	
-	
-# String to expression parsing functions
-func get_A_Text_function():
-	
-	# Create a new Expression instance
-	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/A/A_Line.text, ["x"])
 
-	# Check if the text is a valid float or integer
-	if $ItemList/A/A_Line.text.is_valid_float() or $ItemList/A/A_Line.text.is_valid_int():
-		A_Text = $ItemList/A/A_Line.text.to_float()
-		return A_Text
-	elif error == OK:
-		# Check if the parsed expression is valid and has not failed execution
-		if new_function != null and not new_function.has_execute_failed():
-			A_Func = new_function
-			return A_Func
+# various functions
+func update_shader_param(func_var, text_var, param_name):
+	var value = func_var.execute([iTime]) if func_var != null else text_var
+	if value != null:
+			$ColorRect.material.set_shader_parameter(param_name, value)
 
-	return null  # Return null if none of the conditions are met
-	
-func get_B_Text_function():
+func get_Text_function(u_node, u_float, u_func):
 	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/B/B_Line.text, ["x"])
-	
-	if $ItemList/B/B_Line.text.is_valid_float() or $ItemList/B/B_Line.text.is_valid_int():
-		B_Text = $ItemList/B/B_Line.text.to_float()
-		return B_Text
+	var error = new_function.parse(u_node.text, ["x"])
+	if u_node.text.is_valid_float() or u_node.text.is_valid_int():
+		u_float = u_node.text.to_float()
+		return u_float
 	elif error == OK:
 		if new_function != null and not new_function.has_execute_failed():
-			B_Func = new_function
-			return B_Func
-
+			u_func = new_function
+			return u_func
 	return null
 
-func get_C_Text_function():
-	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/C/C_Line.text, ["x"])
-
-	if $ItemList/C/C_Line.text.is_valid_float() or $ItemList/C/C_Line.text.is_valid_int():
-		C_Text = $ItemList/C/C_Line.text.to_float()
-		return C_Text
-	elif error == OK:
-		if new_function != null and not new_function.has_execute_failed():
-			C_Func = new_function
-			return C_Func
-
-	return null
-
-func get_D_Text_function():
-	var new_function = Expression.new()
-	var error = new_function.parse($ItemList/D/D_Line.text, ["x"])
-
-	if $ItemList/D/D_Line.text.is_valid_float() or $ItemList/D/D_Line.text.is_valid_int():
-		D_Text = $ItemList/D/D_Line.text.to_float()
-		return D_Text
-	elif error == OK:
-		if new_function != null and not new_function.has_execute_failed():
-			D_Func = new_function
-			return D_Func
-
-	return null
-
-# Text changed signals
-func A_line_text_changed(text):
-	print(text)
+# interaction signals
+func A_line_text_changed(text):	
 	if text.is_valid_float() or text.is_valid_int():
 		A_Text = text.to_float()
 		A_Func = null
 	else:
-		A_Func = get_A_Text_function()
+		A_Func = get_Text_function($ItemList/A/A_Line, A_Text, A_Func)
 	
 func B_line_text_changed(text):
-	print(text)
 	if text.is_valid_float() or text.is_valid_int():
 		B_Text = text.to_float()
 		B_Func = null
 	else:
-		B_Func = get_B_Text_function()
+		B_Func = get_Text_function($ItemList/B/B_Line, B_Text, B_Func)
 	
-func C_line_text_changed(text):
-	print(text)
+func C_line_text_changed(text):	
 	if text.is_valid_float() or text.is_valid_int():
 		C_Text = text.to_float()
 		C_Func = null
 	else:
-		C_Func = get_C_Text_function()
+		C_Func = get_Text_function($ItemList/C/C_Line, C_Text, C_Func)
 
 func D_line_text_changed(text):
-	print(text)
 	if text.is_valid_float() or text.is_valid_int():
 		D_Text = text.to_float()
 		D_Func = null
 	else:
-		D_Func = get_D_Text_function()
+		D_Func = get_Text_function($ItemList/D/D_Line, D_Text, D_Func)
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/Main/full edit/fulledit.tscn")
