@@ -3,3 +3,9 @@
 .vscode/
 .misc/
 saved_shader*.gdshader
+Sand Lot.console.exe
+Sand Lot.exe
+Sand Lot.pck
+Builds/
+Builds/*
+Builds/Assets/Shaders/full_edit.gdshader

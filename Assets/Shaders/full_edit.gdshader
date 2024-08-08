@@ -1,8 +1,33 @@
 shader_type canvas_item;
 varying vec2 iResolution;
-uniform sampler2D iChannel0;
+varying vec2 canvas;
 
+vec2 rotate2D(vec2 _st, float _angle){
+    _st -= 0.5;
+    float a = cos(_angle);
+    float b = -sin(_angle);
+    float c = sin(_angle);
+    float d = cos(_angle);
+    vec2 row1 = vec2(a, b);
+    vec2 row2 = vec2(c, d);
+    mat2 built_mat2 = mat2(row1, row2);
+    _st = built_mat2 * _st.xy;
+    _st += 0.5;
+    return _st;
+}
 
+vec2 tile(vec2 _st, float _zoom){
+    _st *= _zoom;
+    return fract(_st);
+}
+
+float box(vec2 _st, vec2 _size, float _smoothEdges){
+    _size = vec2(0.5)-_size*0.5;
+    vec2 aa = vec2(_smoothEdges*0.5);
+    vec2 uv = smoothstep(_size,_size+aa,_st);
+    uv *= smoothstep(_size,_size+aa,vec2(1.0)-_st);
+    return uv.x*uv.y;
+}
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -11,20 +36,43 @@ void vertex() {
 }
 
 void fragment() {
-	
-	vec2 flippedUV = vec2(UV.x, 1.0 - UV.y);
-	vec2 v_blue = vec2(1.0 - UV.x, 1.0 - UV.y);
-	lowp vec2 block_UV = flippedUV * 10.;
-	if (round(block_UV) == vec2(5.,5.)){
-		block_UV = vec2(0.,0.);
-	}
-	float fog = smoothstep(0.1, -0.02, abs(flippedUV.y + TIME * 9.));
-	block_UV = round(block_UV)/10.; 
-	
-	vec3 finalColor = vec3(block_UV,(v_blue.x)- v_blue.y);
-	finalColor = finalColor + (vec3(flippedUV,1. + (v_blue.x)- v_blue.y) - vec3(fog));
+	vec2 st = (UV.xy/iResolution.xy);
+	vec3 color = vec3(0.0);
 
-    COLOR = vec4(finalColor, 1.0);
+	// Divide the space in 4
+	st = tile(st,8.);
+
+	// Use a matrix to rotate the space 45 degrees
+	float angle = 0.25;
+	float i = 0.01;
+	i = mod(TIME, 4.0);
+	
+	while (i < 4.0) {
+			if (i >= 0.25 && i <= 0.75) {
+					angle = i;
+			} else {
+					angle = 0.25;
+			}
+			break; // Exit the loop to avoid infinite loop
+	}
+	
+	st = rotate2D(st, PI * angle);
+
+
+	// clamp setup
+	vec3 vec3_min = vec3(0.0);
+	vec3 vec3_max = vec3(1.0);
+
+    // Draw a square
+	vec3 fcolor = (vec3(box(st,vec2(0.7),0.03))) - vec3(.88,.88,.88);
+	fcolor = clamp(fcolor, vec3_min, vec3_max);
+	
+	// setting the final colors 
+	fcolor = fcolor + vec3(0.12,0.12,0.14);
+
+
+
+    COLOR = vec4(fcolor, 1.0);
 }
 
 //void light() {

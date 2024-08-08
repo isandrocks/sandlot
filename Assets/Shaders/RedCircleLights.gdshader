@@ -1,4 +1,5 @@
 shader_type canvas_item;
+
 varying vec2 iResolution;
 uniform sampler2D iChannel0;
 
@@ -36,13 +37,18 @@ vec3 palette(float t) {
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	iResolution = vec2(UV.x, 1.0 - UV.y);
+	iResolution = UV;
 	
 }
 
-void fragment() {
-	// Called for every pixel the material is visible on.
-	vec2 normalizedCoord = VERTEX.xy / iResolution.xy;
+void fragment() {}
+
+
+void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+		// Called for every pixel the material is visible on.
+	vec2 normalizedCoord = LIGHT_VERTEX.xy / iResolution.xy;
     float angle = atan(iResolution.x, iResolution.y);
     float frequency = max(getfrequency_blend(abs(angle / PI)) - 0.02, 0.0);
     vec2 uv = ((normalizedCoord.xy * iResolution.xy ) / normalizedCoord.xy);
@@ -50,12 +56,12 @@ void fragment() {
     vec3 finalColor = vec3(0.0);
 
     for(float i = 0.0; i < 4.0; i ++) {
-        uv = fract(uv * 1.5) - 0.5 ;  
+        uv = fract(uv * 1.5) - 0.5;
         
 
         float d = length(uv) * exp(- length(uv0));
 
-        vec3 col = palette(length(uv0) + i * .1 + TIME );
+        vec3 col = palette(length(uv0) + i * .4 + TIME );
 
         d = sin(d * 8. + TIME) / 8.;
         d = abs(d);
@@ -65,10 +71,6 @@ void fragment() {
         finalColor += col * d;
     }
 
-    COLOR = vec4(finalColor, 1.0);
+    LIGHT = vec4(finalColor, 1.0);
 }
 
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}

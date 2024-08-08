@@ -210,16 +210,49 @@ anchors_preset = -1
 anchor_left = 0.42
 anchor_top = 0.148261
 anchor_right = 0.52
-anchor_bottom = 0.20913
+anchor_bottom = 0.226
 offset_top = -0.200043
-offset_bottom = -0.200012
+offset_right = -3.05176e-05
+offset_bottom = 1.03999
 theme = ExtResource("4_6heq7")
 theme_override_font_sizes/font_size = 14
 text = "SandBox"
 metadata/_edit_use_anchors_ = true
+
+[node name="3D_test_Button" type="Button" parent="SandBox_Button"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "3D Test"
+
+[node name="2D_test_Button" type="Button" parent="SandBox_Button"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 55.0
+offset_right = 40.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "2D Test"
 
 [connection signal="text_changed" from="ItemList/A/A_Line" to="." method="A_line_text_changed"]
 [connection signal="text_changed" from="ItemList/B/B_Line" to="." method="B_line_text_changed"]
 [connection signal="text_changed" from="ItemList/C/C_Line" to="." method="C_line_text_changed"]
 [connection signal="text_changed" from="ItemList/D/D_Line" to="." method="D_line_text_changed"]
 [connection signal="pressed" from="SandBox_Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SandBox_Button/3D_test_Button" to="." method="_on_3d_test_button_pressed"]
+[connection signal="pressed" from="SandBox_Button/2D_test_Button" to="." method="_on_2d_test_button_pressed"]

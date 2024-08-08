@@ -91,3 +91,11 @@ func D_line_text_changed(text):
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/Main/full edit/fulledit.tscn")
+
+
+func _on_3d_test_button_pressed():
+	get_tree().change_scene_to_file("res://Scene/Main/3D Test/3D_Test.tscn")
+
+
+func _on_2d_test_button_pressed():
+	get_tree().change_scene_to_file("res://Scene/Main/2D Test/2D_Test.tscn")

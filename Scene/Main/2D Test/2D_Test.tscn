@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccp4gtwcuyvb"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/M_MenuBG.gdshader" id="1_65j51"]
+[ext_resource type="Texture2D" uid="uid://7h4gpbo5ev0u" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0000.png" id="2_32x3l"]
+[ext_resource type="Texture2D" uid="uid://b4oyg2rmh7gvr" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0001.png" id="3_1gedt"]
+[ext_resource type="Texture2D" uid="uid://j5hp2qweu2nc" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0002.png" id="4_5oxnr"]
+[ext_resource type="Texture2D" uid="uid://b4ecbfnt53xwk" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0003.png" id="5_fjs6e"]
+[ext_resource type="Texture2D" uid="uid://cvgi7yh2g20bo" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0004.png" id="6_r7rmj"]
+[ext_resource type="Texture2D" uid="uid://c4bs14k1vutu5" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0005.png" id="7_tjayh"]
+[ext_resource type="Texture2D" uid="uid://blhn6cw66rx53" path="res://Assets/Img/Sprites/Con-man/Timeline 1_0006.png" id="8_0kc46"]
+[ext_resource type="Texture2D" uid="uid://chbtxlfiiiqyk" path="res://Assets/Img/Sprites/Con-man/Shadow/45_shadow.png" id="9_4nl1c"]
+[ext_resource type="Shader" path="res://Assets/Shaders/RedCircleLights.gdshader" id="9_dsqsn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ylfs"]
+shader = ExtResource("1_65j51")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvfho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_32x3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1gedt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5oxnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fjs6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r7rmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tjayh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0kc46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h7jo"]
+shader = ExtResource("9_dsqsn")
+shader_parameter/iChannel0 = ExtResource("9_4nl1c")
+
+[node name="Main" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -333
+material = SubResource("ShaderMaterial_7ylfs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(416, 392)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+z_index = 1
+texture_filter = 1
+position = Vector2(0, -128)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_gvfho")
+autoplay = "default"
+frame = 5
+frame_progress = 0.91564
+
+[node name="shadow45" type="Sprite2D" parent="Node2D/AnimatedSprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_8h7jo")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_4nl1c")
+offset = Vector2(0, 60)
+
+[node name="PlayerCam" type="Camera2D" parent="Node2D"]
+offset = Vector2(-16, -160)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.61

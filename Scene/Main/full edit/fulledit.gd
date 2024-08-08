@@ -72,6 +72,5 @@ func _on_timer_timeout():
 	new_shader.set_code(content)
 	$ShaderControl/ColorRect.material.shader = new_shader
 
-
 func _on_save_pressed():
 	save_shader()
