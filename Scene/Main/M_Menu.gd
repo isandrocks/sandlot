@@ -99,3 +99,7 @@ func _on_3d_test_button_pressed():
 
 func _on_2d_test_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/Main/2D Test/2D_Test.tscn")
+
+
+func _on_light_game_button_pressed():
+	get_tree().change_scene_to_file("res://Scene/Main/Light Game/Light_game.tscn")

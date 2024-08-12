@@ -1,14 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdip52abp1iqc"]
+[gd_scene load_steps=8 format=3 uid="uid://bdip52abp1iqc"]
 
 [ext_resource type="Script" path="res://Scene/Main/full edit/fulledit.gd" id="1_mwi6k"]
-[ext_resource type="Shader" path="res://Assets/Shaders/M_MenuBG.gdshader" id="2_256nu"]
+[ext_resource type="Material" uid="uid://o61sjaeuxkoi" path="res://Assets/BG_mat.tres" id="2_3ev1k"]
 [ext_resource type="Material" uid="uid://ccd8jx2wr7rdp" path="res://Assets/SandBox_shaderMat.tres" id="3_mnl56"]
 [ext_resource type="Script" path="res://Scene/Main/full edit/ShaderControl.gd" id="4_6mnf6"]
 [ext_resource type="Theme" uid="uid://dyk6kmof1qpcj" path="res://Assets/Window1.tres" id="4_nwl5s"]
 [ext_resource type="PackedScene" uid="uid://dadr4k7fykydo" path="res://Scene/Main/full edit/color_rect_FE.tscn" id="4_q3o3o"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcygs"]
-shader = ExtResource("2_256nu")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ailji"]
 
@@ -23,7 +20,7 @@ script = ExtResource("1_mwi6k")
 
 [node name="Background" type="TextureRect" parent="."]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_wcygs")
+material = ExtResource("2_3ev1k")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

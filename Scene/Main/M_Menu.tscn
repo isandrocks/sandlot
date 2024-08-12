@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://uh55o3k7n7me"]
+[gd_scene load_steps=9 format=3 uid="uid://uh55o3k7n7me"]
 
 [ext_resource type="Script" path="res://Scene/Main/M_Menu.gd" id="1_7if72"]
-[ext_resource type="Shader" path="res://Assets/Shaders/M_MenuBG.gdshader" id="2_p8tvr"]
 [ext_resource type="Shader" path="res://Assets/Shaders/M_Menu.gdshader" id="3_8r1q3"]
+[ext_resource type="Material" uid="uid://o61sjaeuxkoi" path="res://Assets/BG_mat.tres" id="3_uqjbj"]
 [ext_resource type="Theme" uid="uid://dyk6kmof1qpcj" path="res://Assets/Window1.tres" id="4_6heq7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_13f76"]
-shader = ExtResource("2_p8tvr")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2v6lb"]
 
@@ -38,7 +35,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MM_Background" type="TextureRect" parent="."]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_13f76")
+material = ExtResource("3_uqjbj")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,6 +66,7 @@ offset_bottom = -0.100006
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemList" type="ItemList" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.08
@@ -205,6 +203,7 @@ text = "COLOR = Vec4( A, B, C, D)
 x = 0.0 ~ 1.0"
 
 [node name="SandBox_Button" type="Button" parent="."]
+texture_filter = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.42
@@ -227,11 +226,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -40.0
-offset_top = 10.0
+offset_top = 15.0
 offset_right = 40.0
-offset_bottom = 43.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 0
+disabled = true
 text = "3D Test"
 
 [node name="2D_test_Button" type="Button" parent="SandBox_Button"]
@@ -242,12 +242,28 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -40.0
-offset_top = 55.0
+offset_top = 63.0
 offset_right = 40.0
-offset_bottom = 87.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "2D Test"
+
+[node name="Light_game_button" type="Button" parent="SandBox_Button"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 108.0
+offset_right = 40.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "LightsOut"
 
 [connection signal="text_changed" from="ItemList/A/A_Line" to="." method="A_line_text_changed"]
 [connection signal="text_changed" from="ItemList/B/B_Line" to="." method="B_line_text_changed"]
@@ -256,3 +272,4 @@ text = "2D Test"
 [connection signal="pressed" from="SandBox_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SandBox_Button/3D_test_Button" to="." method="_on_3d_test_button_pressed"]
 [connection signal="pressed" from="SandBox_Button/2D_test_Button" to="." method="_on_2d_test_button_pressed"]
+[connection signal="pressed" from="SandBox_Button/Light_game_button" to="." method="_on_light_game_button_pressed"]
